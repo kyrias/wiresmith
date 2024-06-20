@@ -42,6 +42,10 @@ pub struct CliArgs {
     #[arg(short = 'p', long, default_value = "51820")]
     pub wg_port: u16,
 
+    /// Consul TTL times out after this duration without being renewed
+    #[arg(long, default_value = "1min", value_parser = humantime::parse_duration)]
+    pub consul_ttl: Duration,
+
     /// Remove disconnected peers after this duration
     ///
     /// Set to 0 in order to disable.
